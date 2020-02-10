@@ -26,7 +26,5 @@ for i in range(city_len):
     data_time = data_dict[i]["time"]
     if city_now == u"新莊區":
         if u"銘德街" in data_dict[i]["location"]:
-            msg = data_dict[i]["location"]
+            msg = "垃圾車位置:{}".format(data_dict[i]["location"])
             lineNotify(token, msg)
-
-
