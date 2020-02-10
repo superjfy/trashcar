@@ -2,7 +2,6 @@
 import requests
 import json
 
-token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
 
 
 def lineNotify(token, msg):
@@ -11,12 +10,12 @@ def lineNotify(token, msg):
         "Authorization": "Bearer " + token,
         "Content-Type": "application/x-www-form-urlencoded"
     }
-
     payload = {'message': msg}
     r = requests.post(url, headers=headers, params=payload)
     return r.status_code
 
 
+token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
 req = requests.get("https://data.ntpc.gov.tw/od/data/api/28AB4122-60E1-4065-98E5-ABCCB69AACA6?$format=json")
 data_dict = json.loads(req.text)
 city_len = len(data_dict)
@@ -26,5 +25,5 @@ for i in range(city_len):
     data_time = data_dict[i]["time"]
     if city_now == u"新莊區":
         if u"銘德街" in data_dict[i]["location"]:
-            msg = "垃圾車位置:{}".format(data_dict[i]["location"])
+            msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
             lineNotify(token, msg)
