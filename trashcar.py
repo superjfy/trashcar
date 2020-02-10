@@ -12,7 +12,7 @@ for i in range(city_len):
     data_time = data_dict[i]["time"]
     if city_now == u"新莊區":
         print(data_dict[i]["location"], data_dict[i]["latitude"], data_dict[i]["longitude"])
-        if "銘德街" in data_dict[i]["location"]:
+        if u"銘德街" in data_dict[i]["location"]:
             print(data_dict[i]["location"], data_dict[i]["latitude"], data_dict[i]["longitude"])
 
 
