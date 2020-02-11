@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*
 import requests
 import json
+from linebot import LineBotApi
+from linebot.models import TextSendMessage
 
-
+def linebot_msg(lineAccessToken, msg):
+    line_bot_api = LineBotApi(lineAccessToken)
+    line_bot_api.push_message('C9608ef211aeebf77abedaee292160169', TextSendMessage(text=msg))
 
 def lineNotify(token, msg):
     url = "https://notify-api.line.me/api/notify"
@@ -27,4 +31,5 @@ for i in range(city_len):
     if city_now == u"新莊區":
         if u"銘德街" in data_dict[i]["location"]:
             msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
-            lineNotify(token, msg)
+            #lineNotify(token, msg)
+            linebot_msg(lineAccessToken, msg)
