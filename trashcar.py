@@ -14,7 +14,8 @@ def lineNotify(token, msg):
     r = requests.post(url, headers=headers, params=payload)
     return r.status_code
 
-
+lineAccessToken = "yLbk5g3LkoCwqPpKkaRkI9S0DPZ871Z/tQg4KQRLl1G55j07EzjyJzW8ad2MTWDUp8VZ+NSvpdCSH/QarP5ju/t7/1AfdCOBNCp+rNbXjWUkm1R1Kln/BK4JNVOVQ+y981rgYb3dg8nuA0baLY9sRAdB04t89/1O/w1cDnyilFU="
+channelSecret = "5bb12c08aa3a7b6836c3039472cf23e6"
 token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
 req = requests.get("https://data.ntpc.gov.tw/od/data/api/28AB4122-60E1-4065-98E5-ABCCB69AACA6?$format=json")
 data_dict = json.loads(req.text)
