@@ -26,6 +26,7 @@ channelSecret = "5bb12c08aa3a7b6836c3039472cf23e6"
 token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
 jeffamy_token = "u55SZGUpoznt8iODZxwPcGMkTZb3MYXBdFz4CRLFqt5"
 fuda_token = "aVWBWMHl4GGeZWhxNkOoaOB3kgyMiVscC3F9n1msrHF"
+trashcar_token = "s5rlZZ6oTp1BkHE8ZtpZAxuM9IQFsn3UOBTZTKQVUY5"
 req = requests.get("https://data.ntpc.gov.tw/od/data/api/28AB4122-60E1-4065-98E5-ABCCB69AACA6?$format=json")
 data_dict = json.loads(req.text)
 city_len = len(data_dict)
@@ -36,18 +37,18 @@ for i in range(city_len):
     if city_now == u"新莊區":
         if u"銘德街" in data_dict[i]["location"]:
             ming_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
-            lineNotify(fuda_token, ming_msg)
+            lineNotify(trashcar_token, ming_msg)
         else:
             f_roadMatch = street_pattern.search(data_dict[i]["location"])
             if f_roadMatch is not None:
                 f_roadNum = f_roadMatch.group(2)
                 if 1 <= int(f_roadNum) <= 100:
                     f_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
-                    lineNotify(fuda_token, f_msg)
+                    lineNotify(trashcar_token, f_msg)
             else:
                 c_roadMatch = street2_pattern.search(data_dict[i]["location"])
                 if c_roadMatch is not None:
                     c_roadNum = c_roadMatch.group(2)
                     if 130 <= int(c_roadNum) <= 280:
                         c_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
-                        lineNotify(fuda_token, c_msg)
+                        lineNotify(trashcar_token, c_msg)
