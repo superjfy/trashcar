@@ -42,7 +42,7 @@ for i in range(city_len):
             f_roadMatch = street_pattern.search(data_dict[i]["location"])
             if f_roadMatch is not None:
                 f_roadNum = f_roadMatch.group(2)
-                if 1 <= int(f_roadNum) <= 100:
+                if 1 <= int(f_roadNum) <= 55:
                     f_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
                     lineNotify(trashcar_token, f_msg)
             else:
