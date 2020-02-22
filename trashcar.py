@@ -19,8 +19,8 @@ def lineNotify(token, msg):
     r = requests.post(url, headers=headers, params=payload)
     return r.status_code
 
-street_pattern = re.compile(r'^新北市新莊區(復興路2段|復興路二段)(\d{1,3}).*?(巷|號)')
-street2_pattern = re.compile(r'^新北市新莊區(中港路)(\d{1,3}).*?號')
+#street_pattern = re.compile(r'^新北市新莊區(復興路2段|復興路二段)(\d{1,3}).*?(巷|號)')
+#street2_pattern = re.compile(r'^新北市新莊區(中港路)(\d{1,3}).*?號')
 lineAccessToken = "yLbk5g3LkoCwqPpKkaRkI9S0DPZ871Z/tQg4KQRLl1G55j07EzjyJzW8ad2MTWDUp8VZ+NSvpdCSH/QarP5ju/t7/1AfdCOBNCp+rNbXjWUkm1R1Kln/BK4JNVOVQ+y981rgYb3dg8nuA0baLY9sRAdB04t89/1O/w1cDnyilFU="
 channelSecret = "5bb12c08aa3a7b6836c3039472cf23e6"
 token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
@@ -38,6 +38,7 @@ for i in range(city_len):
         if u"銘德街" in data_dict[i]["location"]:
             ming_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
             lineNotify(trashcar_token, ming_msg)
+"""
         else:
             f_roadMatch = street_pattern.search(data_dict[i]["location"])
             if f_roadMatch is not None:
@@ -52,3 +53,4 @@ for i in range(city_len):
                     if 180 <= int(c_roadNum) <= 260:
                         c_msg = u"垃圾車位置:{}".format(data_dict[i]["location"])
                         lineNotify(trashcar_token, c_msg)
+"""
