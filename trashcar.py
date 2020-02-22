@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 import requests
 import json
-import re
+#import re
 from linebot import LineBotApi
 from linebot.models import TextSendMessage
 
