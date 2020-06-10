@@ -27,11 +27,12 @@ token = "URcWh4jqXmWSxmpiPoraXBDeTXu0WWcFO0fFMkIdyHp"
 jeffamy_token = "u55SZGUpoznt8iODZxwPcGMkTZb3MYXBdFz4CRLFqt5"
 fuda_token = "aVWBWMHl4GGeZWhxNkOoaOB3kgyMiVscC3F9n1msrHF"
 trashcar_token = "s5rlZZ6oTp1BkHE8ZtpZAxuM9IQFsn3UOBTZTKQVUY5"
-req = requests.get("https://data.ntpc.gov.tw/od/data/api/28AB4122-60E1-4065-98E5-ABCCB69AACA6?$format=json")
+#req = requests.get("https://data.ntpc.gov.tw/od/data/api/28AB4122-60E1-4065-98E5-ABCCB69AACA6?$format=json")
+req = requests.get("https://data.ntpc.gov.tw/api/datasets/28AB4122-60E1-4065-98E5-ABCCB69AACA6/json?page=0&size=500")
 data_dict = json.loads(req.text)
 city_len = len(data_dict)
 for i in range(city_len):
-    city_now = data_dict[i]["cityname"]
+    city_now = data_dict[i]["cityName"]
     car_plat = data_dict[i]["car"]
     data_time = data_dict[i]["time"]
     if city_now == u"新莊區":
